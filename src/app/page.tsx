@@ -1,7 +1,33 @@
+"use client"
 
-import{ tasks } from '../../public/database/tasks'
+import { useEffect, useState } from 'react'
 import { Trash2, CirclePlus } from "lucide-react"
+
+
+
+
 export default function (){
+
+  const [tasks, setTasks] = useState([])
+
+  useEffect(()=>{
+    const fetchData = async () =>{
+      try{
+        const data = await fetch('/api/posts')
+        const response = await data.json()
+        setTasks(response)
+        // console.log(response);
+      }catch(error){
+        console.log(error);
+        
+      }
+      
+    }
+    fetchData();
+   
+  },[])
+
+
   return(
   <div className="main w-full h-screen bg-zinc-800 p-4">
 
@@ -16,7 +42,7 @@ export default function (){
 
       {
         tasks.map((elem) => (
-          <div key={elem.id} className={`relative tasks-view mt-8 bg-cyan-600 ${elem.bgColor} `}>
+          <div key={elem.id} className={`relative tasks-view mt-8  ${elem.bgcolor} `}>
             <h2 className="text-2xl font-medium">{elem.name}</h2>
             <h3 className="text-base w-9/10 ml-2">{elem.description}</h3>
             <button className="absolute right-4 top-1">

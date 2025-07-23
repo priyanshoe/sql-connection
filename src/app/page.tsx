@@ -2,12 +2,14 @@
 
 import { useEffect, useState } from 'react'
 import { Trash2, CirclePlus } from "lucide-react"
+import { useRouter } from 'next/navigation'
 
 
 
 
 export default function (){
 
+  const router = useRouter();
   const [tasks, setTasks] = useState([])
 
   useEffect(()=>{
@@ -27,13 +29,12 @@ export default function (){
    
   },[])
 
-
   return(
   <div className="main w-full h-screen bg-zinc-800 p-4">
 
     <div className="nav flex justify-between">
       <h1 className="text-4xl font-extrabold">To-Do List</h1>
-      <button>
+      <button onClick={ () => router.push('/addTask')}>
         <CirclePlus size={36} />
       </button>
     </div>

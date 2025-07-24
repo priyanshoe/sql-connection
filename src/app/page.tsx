@@ -30,7 +30,7 @@ export default function (){
   },[])
 
   return(
-  <div className="main w-full h-screen bg-zinc-800 p-4">
+  <div className="main w-full h-full bg-zinc-800 p-4">
 
     <div className="nav flex justify-between">
       <h1 className="text-4xl font-extrabold">To-Do List</h1>

@@ -11,7 +11,7 @@ export default function AddTaskPage() {
     e.preventDefault()
     console.log('Task submitted:', task)
 // sending data to database
-    await fetch('/api/tasks', { 
+    await fetch('/api/posts', { 
         method: 'POST',
         body: JSON.stringify(task)
     })
